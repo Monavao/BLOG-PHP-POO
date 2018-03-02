@@ -1,3 +1,6 @@
-<h1>Je suis la Homepage</h1>
+<?php foreach($db->query('SELECT * FROM articles', 'App\Table\Article') as $post): ?>
 
-<a href="index.php?p=single">Single</a>
+			<h2><a href="<?= $post->url; ?>"><?= $post->titre ?></a></h2>
+			<p><?= $post->extrait; ?></p>
+
+<?php endforeach; ?>

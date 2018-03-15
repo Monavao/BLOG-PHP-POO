@@ -4,3 +4,5 @@
 			<p><?= $post->extrait; ?></p>
 
 <?php endforeach; ?>
+
+<?php echo 'HELLO'; ?>

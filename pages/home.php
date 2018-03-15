@@ -14,3 +14,8 @@
 		</ul>
 	</div>
 </div>
+
+
+<?php foreach(\App\Table\Categorie::all() as $categorie): ?>
+			<a href="<?= $categorie->url; ?>"><?= $categorie->titre; ?>
+		<?php endforeach; ?>

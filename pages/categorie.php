@@ -5,12 +5,6 @@ use App\Table\Categorie;
 
 $categorie = Categorie::find($_GET['id']);
 $articles = Article::lastByCategory($_GET['id']);
-
-if($categorie == false)
-{
-	\App\App::notFound();
-}
-
 $categories = Categorie::all();
 
 ?>

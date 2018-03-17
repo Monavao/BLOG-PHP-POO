@@ -4,7 +4,12 @@ require '../apps/Autoloader.php';
 App\Autoloader::registerShort();
 
 $app = App\App::getInstance();
-$app->title = "TEST";
+
+$posts = $app->getTable('Posts');
+$posts = $app->getTable('Categories');
+
+//$app = App\App::getInstance();
+//$app->title = "TEST";
 
 
 //$config = App\Config::getInstance();

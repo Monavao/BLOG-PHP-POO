@@ -3,7 +3,15 @@
 require '../apps/Autoloader.php';
 App\Autoloader::registerShort();
 
-if(isset($_GET['p']))
+$app = App\App::getInstance();
+$app->title = "TEST";
+
+
+//$config = App\Config::getInstance();
+
+//var_dump(App\Config::getInstance());
+
+/*if(isset($_GET['p']))
 {
 	$p = $_GET['p'];
 }
@@ -29,4 +37,4 @@ elseif($p === 'categorie')
 
 $content = ob_get_clean();
 
-require '../pages/templates/default.php';
+require '../pages/templates/default.php';*/

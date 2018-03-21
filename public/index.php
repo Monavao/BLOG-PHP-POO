@@ -6,7 +6,9 @@ App\Autoloader::registerShort();
 $app = App\App::getInstance();
 
 $posts = $app->getTable('Posts');
-$posts = $app->getTable('Categories');
+var_dump($posts->all());
+
+//$posts = $app->getTable('Categories');
 
 //$app = App\App::getInstance();
 //$app->title = "TEST";

@@ -1,18 +1,16 @@
 <?php
 
-use App\App;
-use App\Table\Article;
-use App\Table\Categorie;
+$app = App::getInstance();
 
-$categorie = Categorie::find($_GET['id']);
+$categorie = $app->getTable('Categorie')->find($_GET['id']);
 
 if($categorie === false)
 {
-	App::notFound();
+	$app->notFound();
 }
 
-$articles = Article::lastByCategorie($_GET['id']);
-$categories = Categorie::all();
+$articles = $app->getTable('Post')->lastByCategorie($_GET['id']);
+$categories = $app->getTable('Categorie')->all();
 
 ?>
 

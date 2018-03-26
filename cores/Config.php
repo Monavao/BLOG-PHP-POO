@@ -1,26 +1,26 @@
 <?php
 
-namespace App;
+namespace Core;
 
 class Config
 {
 	private $settings = [];
 	private static $_instance;
 
-	public static function getInstance()
+	public static function getInstance($file)
 	{
 		if(is_null(self::$_instance))
 		{
-			self::$_instance = new Config();
+			self::$_instance = new Config($file);
 		}
 
 		return self::$_instance;
 	}
 
-	public function __construct()
+	public function __construct($file)
 	{
-		$this->id = uniqid();
-		$this->settings = require dirname(__DIR__) . '/config/config.php';
+		//$this->id = uniqid();
+		$this->settings = require($file);
 	}
 
 	public function get($key)

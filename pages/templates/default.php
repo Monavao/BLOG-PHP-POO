@@ -1,10 +1,4 @@
-<?php
-
-use App\App;
-
-?>
-
-<!doctype html>
+<!Doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -13,7 +7,7 @@ use App\App;
     <meta name="author" content="">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title><?= App::getTitle(); ?></title>
+    <title><?= App::getInstance()->title; ?></title>
   </head>
 
   <body>

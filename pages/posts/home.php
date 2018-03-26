@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-8">
-		<?php foreach(\App\Table\Article::getLast() as $post): ?>
+		<?php foreach(App::getInstance()->getTable('Post')->last() as $post): ?>
 
 			<?php var_dump($post); ?>
 
@@ -12,7 +12,7 @@
 
 	<div class="col-sm-4">
 		<ul>
-			<?php foreach(\App\Table\Categorie::all() as $categorie): ?>
+			<?php foreach(App::getInstance()->getTable('Categorie')->all() as $categorie): ?>
 				<li><a href="<?= $categorie->url; ?>"><?= $categorie->titre; ?></a></li>
 			<?php endforeach; ?>
 		</ul>

@@ -1,18 +1,10 @@
 <?php
 
-namespace App;
-
-use App\Database\MysqlDatabase;
+use Core\Database\MysqlDatabase;
+use Core\Config;
 
 class App
 {
-	/*const DB_NAME = 'blog';
-	const DB_USER = 'root';
-	const DB_PASS = '';
-	const DB_HOST = 'localhost';
-
-	private static $database;*/
-
 	private static $_instance;
 	private $db_instance;
 	public $title  = 'Website';
@@ -27,6 +19,17 @@ class App
 		return self::$_instance;
 	}
 
+	public static function load()
+	{
+		session_start();
+
+		require ROOT . '/apps/Autoloader.php';
+		App\Autoloader::registerShort();
+
+		require ROOT . '/cores/Autoloader.php';
+		Core\Autoloader::registerShort();
+	}
+
 	public function getTable($name)
 	{
 		$class_name = '\\App\\Table\\' . ucfirst($name) . 'Table';
@@ -36,7 +39,7 @@ class App
 
 	public function getDb()
 	{
-		$config = Config::getInstance();
+		$config = Config::getInstance(ROOT . '/config/config.php');
 
 		if(is_null($this->db_instance))
 		{
@@ -45,32 +48,4 @@ class App
 
 		return $this->db_instance;
 	}
-	
-	/*private static $title = 'Website';
-
-	public static function getDb()
-	{
-		if(self::$database === null)
-		{
-			self::$database = new Database(self::DB_NAME, self::DB_USER, self::DB_PASS, self::DB_HOST);
-		}
-
-		return self::$database;
-	}
-
-	public static function notFound()
-	{
-		header("HTTP/1.0 404 Not Found");
-		header('Location:index.php?p=404');
-	}
-
-	public static function getTitle()
-	{
-		return self::$title;
-	}
-
-	public static function setTitle($title)
-	{
-		self::$title = $title . ' | ' . self::$title;
-	}*/
 }

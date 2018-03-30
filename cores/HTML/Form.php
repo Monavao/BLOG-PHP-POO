@@ -1,0 +1,69 @@
+<?php
+
+namespace Core\HTML;
+
+/**
+ * Class Form
+ * Permet de générer un formulaire
+ */
+
+class Form
+{
+	/**
+	 * @var array Données utilisées par le formulaire
+	 */
+	protected $data;
+
+	/**
+	 * @var string Tag utilisé pour entourer les champs
+	 */
+	public $surround = 'p';
+
+	/**
+	 * @param array $data Données utilisées par le formulaire
+	 */
+	public function __construct($data = array())
+	{
+		$this->data = $data;
+	}
+
+	/**
+	 * @param $html string Code Html à entourer
+	 * @return string
+	 */
+	protected function surround($html)
+	{
+		return "<{$this->surround}>{$html}</{$this->surround}>";
+	}
+
+	/**
+	 * @param $index string Index de la valeur à récupérer
+	 * @return string
+	 */
+	protected function getValue($index)
+	{
+		return isset($this->data[$index]) ? $this->data[$index] : null;
+	}
+
+	/**
+	 * @param $name string
+	 * @param $label
+	 * @param array $option
+	 * @return string
+	 */
+	public function input($name, $label, $options = [])
+	{
+		$type = isset($options['type']) ? $options['type'] : 'text';
+
+		return $this->surround('<input type="' . $type . '" name="' . $name 
+			. '" value="' . $this->getValue($name) . '">');
+	}
+
+	/**
+	 * @return string
+	 */
+	public function submit()
+	{
+		return $this->surround('<button type="submit">Envoyer</button>');
+	}
+}

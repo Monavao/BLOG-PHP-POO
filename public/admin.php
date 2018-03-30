@@ -33,6 +33,10 @@ if($p === 'home')
 {
 	require ROOT . '/pages/admin/posts/index.php';
 }
+elseif($p === 'posts.edit')
+{
+	require ROOT . '/pages/admin/posts/edit.php';
+}
 elseif($p === 'posts.show')
 {
 	require ROOT . '/pages/admin/posts/show.php';

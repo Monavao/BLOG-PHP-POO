@@ -9,11 +9,17 @@ if(!empty($_POST))
 
 	if($auth->login($_POST['username'], $_POST['password']))
 	{
-		die('Connecté');
+		header('Location: admin.php');
 	}
 	else
 	{
-		die('Pas connecté');
+		?>
+
+		<div class="alert alert-danger">
+			Identifiants invalides
+		</div>
+
+		<?php
 	}
 }
 

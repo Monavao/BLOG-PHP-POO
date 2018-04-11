@@ -37,6 +37,14 @@ elseif($p === 'posts.edit')
 {
 	require ROOT . '/pages/admin/posts/edit.php';
 }
+elseif($p === 'posts.delete')
+{
+	require ROOT . '/pages/admin/posts/delete.php';
+}
+elseif($p === 'posts.add')
+{
+	require ROOT . '/pages/admin/posts/add.php';
+}
 elseif($p === 'posts.show')
 {
 	require ROOT . '/pages/admin/posts/show.php';

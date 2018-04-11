@@ -8,7 +8,7 @@ $categories = App::getInstance()->getTable('Categorie')->list('id', 'titre');
 
 if(!empty($_POST))
 {
-	$result = $postTable->update($_GET['id'], [
+	$result = $postTable->create([
 		'titre' => $_POST['titre'],
 		'contenu' => $_POST['contenu'],
 		'categorie_id' => $_POST['categorie_id']
@@ -16,18 +16,11 @@ if(!empty($_POST))
 
 	if($result)
 	{
-		?>
-
-		<div class="alert alert-success">
-			L'article a bien été mis à jour.
-		</div>
-
-		<?php
+		header('Location: admin.php?p=posts.edit&id=' . App::getInstance()->getDb()->lastInsertID());
 	}
 }
 
-$post = $postTable->find($_GET['id']); 
-$form = new BootstrapForm($post);
+$form = new BootstrapForm($_POST);
 
 ?>
 

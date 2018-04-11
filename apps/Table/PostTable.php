@@ -17,7 +17,7 @@ class PostTable extends Table
 			ORDER BY articles.date DESC");
 	}
 
-	public function find($id)
+	public function findWithCategorie($id)
 	{
 		return $this->query("
 			SELECT articles.id, articles.titre, articles.contenu, articles.date, categories.titre AS categorie

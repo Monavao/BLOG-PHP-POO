@@ -1,5 +1,7 @@
 <?php
 
+use App\Controller\PostsController;
+
 define('ROOT', dirname(__DIR__));
 
 require ROOT . '/apps/App.php';
@@ -15,25 +17,33 @@ else
 	$p = 'home';
 }
 
-ob_start();
+//ob_start();
 
 if($p === 'home')
 {
-	require ROOT . '/pages/posts/home.php';
+	$controller = new PostsController();
+	$controller->index();
+	//require ROOT . '/pages/posts/home.php';
 }
 elseif($p === 'posts.show')
 {
-	require ROOT . '/pages/posts/show.php';
+	$controller = new PostsController();
+	$controller->show();
+	//require ROOT . '/pages/posts/show.php';
 }
 elseif($p === 'posts.categorie')
 {
-	require ROOT . '/pages/posts/categorie.php';
+	$controller = new PostsController();
+	$controller->categories();
+	//require ROOT . '/pages/posts/categorie.php';
 }
 elseif($p === 'login')
 {
-	require ROOT . '/pages/users/login.php';
+	$controller = new UsersController();
+	$controller->login();
+	//require ROOT . '/pages/users/login.php';
 }
 
-$content = ob_get_clean();
+//$content = ob_get_clean();
 
-require ROOT . '/pages/templates/default.php';
+//require ROOT . '/pages/templates/default.php';

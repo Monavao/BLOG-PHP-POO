@@ -44,11 +44,7 @@ class Table
 
 		$attributes[] = $id;
 		$sql_part = implode(', ', $sql_parts);
-
-		//var_dump(implode(',', $sql_parts));
-		//var_dump($attributes);
-		//die($sql_parts);
-
+		
 		return $this->query("UPDATE {$this->table} SET $sql_part WHERE id = ?", $attributes, true);
 	}
 

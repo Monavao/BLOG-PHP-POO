@@ -1,11 +1,7 @@
 <?php
 
-use App\Controller\PostsController;
-
 define('ROOT', dirname(__DIR__));
-
 require ROOT . '/apps/App.php';
-
 App::load();
 
 if(isset($_GET['p']))
@@ -14,36 +10,21 @@ if(isset($_GET['p']))
 }
 else
 {
-	$p = 'home';
+	$p = 'posts.index';
 }
 
-//ob_start();
+$p = explode('.', $p);
 
-if($p === 'home')
+if($p[0] === 'admin')
 {
-	$controller = new PostsController();
-	$controller->index();
-	//require ROOT . '/pages/posts/home.php';
+	$controller = '\App\Controller\Admin\\' . ucfirst($p[1]) . 'AdminController';
+	$action = $p[2];
 }
-elseif($p === 'posts.show')
+else
 {
-	$controller = new PostsController();
-	$controller->show();
-	//require ROOT . '/pages/posts/show.php';
-}
-elseif($p === 'posts.categorie')
-{
-	$controller = new PostsController();
-	$controller->categories();
-	//require ROOT . '/pages/posts/categorie.php';
-}
-elseif($p === 'login')
-{
-	$controller = new UsersController();
-	$controller->login();
-	//require ROOT . '/pages/users/login.php';
+	$controller = '\App\Controller\\' . ucfirst($p[0]) . 'Controller';
+	$action = $p[1];
 }
 
-//$content = ob_get_clean();
-
-//require ROOT . '/pages/templates/default.php';
+$controller = new $controller();
+$controller->$action();

@@ -39,6 +39,16 @@ class QueryBuilder
 		return $this;
 	}
 
+
+	public function __toString()
+	{
+		return 'SELECT ' . implode(', ', $this->select) 
+			. ' FROM ' . implode(', ', $this->from) 
+			. ' WHERE ' . implode(' AND ', $this->where);
+	}
+
+	// ou sinon
+	 
 	/*
 	public function getQuery()
 	{
@@ -47,11 +57,4 @@ class QueryBuilder
 			. ' WHERE ' . implode(' AND ', $this->where);
 	}
 	*/
-
-	public function __toString()
-	{
-		return 'SELECT ' . implode(', ', $this->select) 
-			. ' FROM ' . implode(', ', $this->from) 
-			. ' WHERE ' . implode(' AND ', $this->where);
-	}
 }
